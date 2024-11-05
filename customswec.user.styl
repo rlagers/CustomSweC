@@ -1,0 +1,207 @@
+/* ==UserStyle==
+@name           Custom SweC
+@namespace      github.com/openstyles/stylus
+@version        0.3.0
+@description    Customization Sweclockers 
+@author         Lagers
+@homepageURL	https://github.com/rlagers/CustomSweC
+@supportURL		https://github.com/rlagers/CustomSweC/issues
+@updateURL		https://raw.githubusercontent.com/rlagers/Wider-Sweclockers/main/customswec.user.styl
+
+@license        GPL-3.0 License
+@preprocessor   stylus
+
+@var select var-font "Select font to use" {
+    "Arial*": "Arial",
+    "Inter": "Inter",
+}
+
+@var checkbox var-wider-swec "Wider Sweclockers" 0
+@var checkbox var-reverse-pic-and-comment "Reverse picture and comment" 1
+@var checkbox var-discreet-comment-buttons "Discreet comment buttons" 1
+@var checkbox var-change-widget "Change widget design" 1
+
+@var select var-signature "Show Signature" {
+    "hide*": "hide",
+    "small": "0.875em",
+    "normal": "1.0em"
+}
+
+@var checkbox var-forumpost-button "Small forum button" 1
+@var checkbox var-forumpost-rapportera "Hide 'rapportera' button" 1
+@var checkbox var-forum-post-header-checkbox "Hide forum header checkbox" 1
+@var checkbox var-compact-profile-section "Compact profile section" 1
+@var checkbox var-compact-post-section "Compact forum/citat section" 1
+
+
+==/UserStyle== */
+@-moz-document domain("www.sweclockers.com") {
+
+    /* Change font */
+    if (var-font=="Arial") {
+        body {
+            font-family: Arial,Helvetica,Meiryo,sans-serif !important;
+        }
+    }
+    else {
+        body {
+            font-family: Inter,Arial,Helvetica,Meiryo,sans-serif !important;
+        }
+    }
+
+    /* Wider SweC */
+    if var-wider-swec {
+        .container,
+        .col-content,
+        .col-content-wide {
+            max-width: 1500px !important;
+        .col-side {
+            max-width: 360px;
+            flex: 0 0 360px;
+        }
+        .card .card__banner img {
+            margin: 0 auto !important;
+            margin-top: 5px !important;
+            }
+        }
+
+    }
+
+    /* Reverse picture and comment */
+    if (var-reverse-pic-and-comment) {
+        .cards .card__engage {
+            flex-direction: row-reverse !important;
+            align-self: flex-end !important;
+            justify-content: space-evenly !important;
+        }
+        .card--half-banner {
+            flex-direction: row !important;
+        }
+        .card-engage-button__comments {
+            margin-right: 0px;
+            margin-left: 8px;
+        }
+    }
+
+    /* Frontpage & Article discreet buttons */
+    if (var-discreet-comment-buttons) {
+        .card-engage-button__comments {
+            background-color: var(--button-primary-default) !important;
+            border-color: var(--border-primary) !important;
+            color: var(--text-primary) !important;
+        }
+        .article-engage__comments {
+            background-color: var(--background-primary) !important;
+            color: var(--text-primary) !important;
+            border: 1px var(--border-primary) solid !important;
+        }
+    }
+    /* Change the design to Widgets */
+    if (var-change-widget) {
+        .widget {
+            padding: 10px 6px 10px 6px !important;            
+        }
+        .widget .widget-head__title {
+            font-size: 16px;
+        }
+        .widget ul li a {
+            white-space: wrap !important;
+        }
+        .widget .widget-list-meta--comment {
+            justify-content: space-evenly !important;
+        }
+        .widget__foot {
+            display: none;
+        }
+        .widgets .widget__foot {
+            display: none;
+        }
+    }
+    
+    /* - - - For the forum - - - */
+
+    /* Hide or small signature */
+    if (var-signature=="hide") {
+        .forum-post-body .signature {
+            display: none !important;
+        }
+    }
+    else {
+        .forum-post-body .signature .bbParagraph {
+            font-size: var-signature !important;
+        }
+    }
+
+    /* Small forum button */
+    if var-forumpost-button {
+        .forum-post .button {
+            font-size: 75% !important;
+        }
+        .forum-post .thumb_up {
+            height: 13px !important;
+            width: 13px !important;
+        }
+    }
+
+    /* hide rapportera Button */
+    if var-forumpost-rapportera {
+        a.button.report {
+            display: none !important;
+        }
+        a.button.edit {
+            border-left-width: 1px !important;
+            border-top-left-radius: 3px !important;
+            border-bottom-left-radius: 3px !important;
+        }
+    }
+
+    /* Forum Post Header checkbox */
+    if var-forum-post-header-checkbox {
+        .forum-post-header .select {
+            display: none !important;
+        }
+    }
+
+    /* Discreet forum profile section */
+    if var-compact-profile-section {
+        .forum-post-body .side.profile dl dt {
+            font-size: 0px !important;
+        }
+        .forum-post-body .side.profile {
+            font-size: 80% !important;
+            max-width: 140px !important;
+        }
+        .forum-post-body .side.profile img.avatar {
+            opacity: 0.7 !important;
+        }
+    }
+
+    /* Compact forum post section */
+    if( var-compact-post-section) {
+        .forum-post-body .bbQuote {
+            font-size: 90% !important;
+            border: none !important;
+        }
+        .forum-post-body .quoteContent {
+            border: none !important;
+            padding-top: 5px !important;
+            margin-top: 5px !important;
+            margin-bottom: 5px !important;
+        }
+        .forum-post-body .quoteLink a {
+            color: grey !important;
+        }
+        .forum-post-body .message {
+            margin-bottom: 0px !important;
+        }
+        a.headerLink {
+            font-size: 80%;
+        }
+    }
+
+    /* Extra margin below top-meny */
+    #content-columns {
+        margin-top: 5px !important;
+ 
+    }
+}
