@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Custom SweC
 @namespace      github.com/openstyles/stylus
-@version        0.3.1
+@version        0.3.2
 @description    Customization Sweclockers 
 @author         Lagers
 @homepageURL	https://github.com/rlagers/CustomSweC
@@ -11,27 +11,28 @@
 @license        GPL-3.0 License
 @preprocessor   stylus
 
-@var select var-font "Select font to use" {
+@var select var-font "Välj teckensnitt" {
     "Arial*": "Arial",
     "Inter": "Inter",
 }
 
-@var checkbox var-wider-swec "Wider Sweclockers" 0
-@var checkbox var-reverse-pic-and-comment "Reverse picture and comment" 1
-@var checkbox var-discreet-comment-buttons "Discreet comment buttons" 1
-@var checkbox var-change-widget "Change widget design" 1
+@var checkbox var-wider-swec "Bredare Sweclockers" 0
+@var checkbox var-reverse-pic-and-comment "Byt plats på bild och kommentar" 1
+@var checkbox var-discreet-comment-buttons "Färglös kommentarsknapp" 1
+@var checkbox var-change-widget "Förbättra widgets" 1
+@var checkbox var-widget-linje "Dölj linje i widgets" 1
 
-@var select var-signature "Show Signature" {
-    "hide*": "hide",
-    "small": "0.875em",
+@var select var-signature "Visa Signatur" {
+    "Göm": "hide",
+    "Liten*": "0.875em",
     "normal": "1.0em"
 }
 
-@var checkbox var-forumpost-button "Small forum button" 1
-@var checkbox var-forumpost-rapportera "Hide 'rapportera' button" 1
-@var checkbox var-forum-post-header-checkbox "Hide forum header checkbox" 1
-@var checkbox var-compact-profile-section "Compact profile section" 1
-@var checkbox var-compact-post-section "Compact forum/citat section" 1
+@var checkbox var-forumpost-button "Mindre forum knappar" 1
+@var checkbox var-forumpost-rapportera "Göm rapporteraknappen" 0
+@var checkbox var-forum-post-header-checkbox "Göm foruminläggets bockrutor" 1
+@var checkbox var-compact-profile-section "Minska profilesektionen" 1
+@var checkbox var-compact-post-section "Minska forum & citat-sektionen" 1
 
 
 ==/UserStyle== */
@@ -40,12 +41,12 @@
     /* Change font */
     if (var-font=="Arial") {
         body {
-            font-family: Arial,Helvetica,Meiryo,sans-serif !important;
+            font-family: Arial, Helvetica, Meiryo, sans-serif !important;
         }
     }
     else {
         body {
-            font-family: Inter,Arial,Helvetica,Meiryo,sans-serif !important;
+            font-family: Inter, Arial, Helvetica, Meiryo, sans-serif !important;
         }
     }
 
@@ -55,16 +56,15 @@
         .col-content,
         .col-content-wide {
             max-width: 1500px !important;
-        .col-side {
-            max-width: 360px;
-            flex: 0 0 360px;
-        }
-        .card .card__banner img {
-            margin: 0 auto !important;
-            margin-top: 5px !important;
+            .col-side {
+                max-width: 360px;
+                flex: 0 0 360px;
+            }
+            .card .card__banner img {
+                margin: 0 auto !important;
+                margin-top: 5px !important;
             }
         }
-
     }
 
     /* Reverse picture and comment */
@@ -99,7 +99,7 @@
     /* Change the design to Widgets */
     if (var-change-widget) {
         .widget {
-            padding: 10px 6px 10px 6px !important;            
+            padding: 10px 6px 10px 6px !important;
         }
         .widget .widget-head__title {
             font-size: 16px;
@@ -107,19 +107,47 @@
         .widget ul li a {
             white-space: wrap !important;
         }
-        .widget .widget-list-meta--comment {
+        /* Disable but save for future */
+/*        .widget .widget-list-meta--comment {
             justify-content: space-evenly !important;
         }
-        .widget__foot {
+        */
+        .col-side .widget__foot {
             display: none;
         }
         .widgets .widget__foot {
             display: none;
         }
+        .widget-list__link {
+            padding: 5px 0px !important;
+            min-height: 36px !important;
+
+        }
+        /* Tack PetterK */
+        .widget-list-meta--comment .icon {
+            width: 0px;
+            height: 0px;
+            margin-right: 0px;
+        }
+        .widget-list-meta--comment {
+            min-width: 30px;
+        }
+        .widget__body {
+            font-size: 12px;
+        }
+        /* Tack Jaxx */
+        .widget-head__title {
+            color: #d7d7d7 !important;
+        }
+    }
+    /* Hide border in Widgets */
+    if( var-widget-linje ) {
+        .widget-list__item {
+            border-top: 0px !important;
+        }
     }
     
     /* - - - For the forum - - - */
-
     /* Hide or small signature */
     if (var-signature=="hide") {
         .forum-post-body .signature {
@@ -199,9 +227,20 @@
         }
     }
 
+    .widget-list-meta--comment .icon {
+        width: 0px;
+        height: 0px;
+        margin-right: 0px;
+    }
+    .widget-list-meta--comment {
+        min-width: 29px;
+    }
+    .widget__body {
+        font-size: 12px;
+    }
+    
     /* Extra margin below top-meny */
     #content-columns {
         margin-top: 5px !important;
- 
     }
 }
