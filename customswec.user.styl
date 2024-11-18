@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Custom SweC
 @namespace      github.com/openstyles/stylus
-@version        0.3.2
+@version        0.3.3
 @description    Customization Sweclockers 
 @author         Lagers
 @homepageURL	https://github.com/rlagers/CustomSweC
@@ -19,7 +19,7 @@
 @var checkbox var-wider-swec "Bredare Sweclockers" 0
 @var checkbox var-reverse-pic-and-comment "Byt plats på bild och kommentar" 1
 @var checkbox var-discreet-comment-buttons "Färglös kommentarsknapp" 1
-@var checkbox var-change-widget "Förbättra widgets" 1
+@var checkbox var-change-widget "Minska padding i widgets" 1
 @var checkbox var-widget-linje "Dölj linje i widgets" 1
 
 @var select var-signature "Visa Signatur" {
@@ -103,37 +103,6 @@
         }
         .widget .widget-head__title {
             font-size: 16px;
-        }
-        .widget ul li a {
-            white-space: wrap !important;
-        }
-        /* Disable but save for future */
-/*        .widget .widget-list-meta--comment {
-            justify-content: space-evenly !important;
-        }
-        */
-        .col-side .widget__foot {
-            display: none;
-        }
-        .widgets .widget__foot {
-            display: none;
-        }
-        .widget-list__link {
-            padding: 5px 0px !important;
-            min-height: 36px !important;
-
-        }
-        /* Tack PetterK */
-        .widget-list-meta--comment .icon {
-            width: 0px;
-            height: 0px;
-            margin-right: 0px;
-        }
-        .widget-list-meta--comment {
-            min-width: 30px;
-        }
-        .widget__body {
-            font-size: 12px;
         }
         /* Tack Jaxx */
         .widget-head__title {
