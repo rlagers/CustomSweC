@@ -29,3 +29,5 @@ With:
 
 Without:
 ![GitHub Logo](swec-forumnocustom.jpg)
+
+![GitHub All Releases](https://img.shields.io/github/downloads/lewdev/hw-gen/total)
