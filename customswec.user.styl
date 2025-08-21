@@ -1,12 +1,12 @@
-        /* ==UserStyle==
+/* ==UserStyle==
 @name           Custom SweC
 @namespace      github.com/openstyles/stylus
-@version        0.5.2
+@version        0.6.0
 @description    Customization Sweclockers 
 @author         Lagers
 @homepageURL	https://github.com/rlagers/CustomSweC
 @supportURL		https://github.com/rlagers/CustomSweC/issues
-@updateURL		https://raw.githubusercontent.com/rlagers/CustomSweC/main/customswec.user.styl
+@updateURL		https://raw.githubusccccercontent.com/rlagers/CustomSweC/main/customswec.user.styl
 
 @license        GPL-3.0 License
 @preprocessor   stylus
@@ -22,6 +22,7 @@
     "Mjuk Grön": "Green",
     "God Jul": "Jul"
 }
+@var range    var-image-dim  "Dimra bilder" [100, 10, 100, 10, "%"]
 
 @var checkbox var-wider-swec "Bredare Sweclockers" 0
 @var checkbox var-reverse-pic-and-comment "Byt plats på bild och kommentar" 1
@@ -44,8 +45,8 @@
 @var checkbox var-compact-profile-section "Minska profilesektionen" 1
 @var checkbox var-compact-post-section "Minska forum & citat-sektionen" 1
 
-
 ==/UserStyle== */
+
         @-moz-document domain("www.sweclockers.com") {
 
             /* Change font */
@@ -186,6 +187,21 @@
                 }
                 .smiley.smiley-down {
                     height: 18px
+                }
+            }
+
+            /* Dim picture on page */
+            if var-image-dim {
+                img {
+                    filter: brightness(var-image-dim);
+                }
+                @media (prefers-color-scheme: dark) {
+                    img,
+                    .cbb,
+                    .il-icon,
+                    .il-wrap {
+                        filter: brightness(var-image-dim);
+                    }
                 }
             }
             /* Wider SweC */
